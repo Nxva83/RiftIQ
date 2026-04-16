@@ -1,0 +1,23 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# Données générées (trop lourdes pour git)
+data/
+output/
+
+# Node
+dashboard/node_modules/
+dashboard/dist/
+dashboard/.vite/
+
+# Clés API (ne jamais committer !)
+.env
+*.env
+
+# OS
+.DS_Store
+Thumbs.db
