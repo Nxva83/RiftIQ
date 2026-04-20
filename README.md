@@ -270,6 +270,12 @@ Ascent, Bind, Split, Haven, Fracture, Pearl, Icebox, Breeze, Lotus, Sunset, Abys
 ### Historique des matchs
 ![Matches](screenshots/matches.png)
 
+### Heatmaps — KMeans
+![Heatmaps](screenshots/heatmaps.png)
+
+### Rapport — Compte rendu
+![Rapport](screenshots/rapport.png)
+
 ### Coach IA — Mistral 7B
 ![Coach IA](screenshots/coach.png)
 
