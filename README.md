@@ -1,69 +1,132 @@
-# 🎮 RiftIQ — AI-Powered Valorant Coaching
+<div align="center">
 
-> Projet EIP Epitech 2025 — Intelligence Artificielle appliquée à l'esport compétitif
+<img src="https://img.shields.io/badge/VALORANT-FF4655?style=for-the-badge&logo=valorant&logoColor=white" />
+<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+<img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
+<img src="https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white" />
 
-RiftIQ analyse tes parties Valorant avec du Machine Learning (K-Means clustering) et génère des heatmaps de tes zones de kills/morts, des statistiques détaillées et des conseils personnalisés, le tout dans un dashboard web avec design Valorant.
+# ⚡ RiftIQ
+### AI-Powered Valorant Coaching Platform
+
+*Analyze your gameplay. Identify your weaknesses. Climb the ladder.*
+
+[Features](#-features) • [Screenshots](#-screenshots) • [Installation](#-installation) • [Usage](#-usage) • [Tech Stack](#-tech-stack) • [Roadmap](#-roadmap)
+
+</div>
 
 ---
 
-## 📋 Prérequis système
+## 🎯 What is RiftIQ?
 
-- **OS** : Ubuntu 20.04+ / WSL2 / Debian
-- **Python** : 3.10+
-- **Node.js** : 20.x+
-- **npm** : 9.x+
-- **Git** : 2.x+
+RiftIQ is a **full-stack AI coaching platform** for competitive Valorant players. It combines Machine Learning, Large Language Models, and Computer Vision to deliver personalized coaching insights — all running **100% locally** on your machine.
+
+No subscription required to get started. No data sent to external AI services. Your gameplay data stays yours.
 
 ---
 
-## 🚀 Installation complète (from scratch)
+## ✨ Features
 
-### 1. Cloner le repo
+### 📊 Performance Dashboard
+Real-time stats visualization with custom SVG charts — KDA evolution, agent winrates, map performance, and player profile radar.
+
+### 🗺️ AI Heatmaps (K-Means Clustering)
+Kill and death position clustering on official Valorant minimaps. Automatically identifies your danger zones and safe positions across 12 maps.
+
+### 🤖 AI Coach — Mistral 7B
+Chat with a local LLM that knows your match history, heatmap patterns, and economy stats. Ask anything, get coaching advice streamed in real time.
+
+### 🔬 Per-Match Analysis
+Select any match from your history and get a detailed breakdown — round by round kill patterns, early deaths, economy efficiency, first blood stats, and multi-kill moments.
+
+### 🎬 Video Coach — LLaVA Vision AI
+Upload an MP4 gameplay recording. RiftIQ extracts key frames, analyzes your on-site positioning and minimap rotations using computer vision, then synthesizes a coaching report.
+
+---
+
+## 📸 Screenshots
+
+### Overview — KPIs & Charts
+![Overview](screenshots/overview.png)
+
+### Match History
+![Matches](screenshots/matches.png)
+
+### K-Means Heatmaps
+![Heatmaps](screenshots/heatmaps.png)
+
+### Analysis Report
+![Rapport](screenshots/rapport.png)
+
+### AI Coach — Mistral 7B
+![Coach IA](screenshots/coach.png)
+
+### Per-Match Analysis
+![Analyse Match](screenshots/analysis.png)
+
+### Video Coach — LLaVA
+![Coach Vidéo](screenshots/video_coach.png)
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| **Frontend** | React 19, Vite, SVG/CSS Charts |
+| **Backend** | Python 3.12, FastAPI, uvicorn |
+| **AI — Clustering** | scikit-learn (K-Means), scipy (KDE) |
+| **AI — LLM** | Mistral 7B via Ollama (local) |
+| **AI — Vision** | LLaVA via Ollama, OpenCV |
+| **Data** | Riot Games API, Henrik Dev API |
+| **Auth** | Riot RSO OAuth2 (in progress) |
+
+---
+
+## ⚙️ Installation
+
+### Prerequisites
+
+- Ubuntu 20.04+ / WSL2 / Debian
+- Python 3.10+
+- Node.js 20+
+- Git
+- Nvidia GPU (recommended for Ollama)
+
+### 1. Clone the repository
 
 ```bash
-git clone https://github.com/TON_USERNAME/RiftIQ.git
+git clone https://github.com/Nxva83/RiftIQ.git
 cd RiftIQ
 ```
 
-### 2. Installer Node.js 20 (si pas déjà installé)
+### 2. Install Node.js 20
 
 ```bash
-# Installe nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-
-# Recharge le shell
 source ~/.bashrc
-
-# Installe et utilise Node 20
-nvm install 20
-nvm use 20
-
-# Vérifie
-node --version   # doit afficher v20.x.x
-npm --version    # doit afficher 9.x.x ou 10.x.x
+nvm install 20 && nvm use 20
 ```
 
-### 3. Créer l'environnement Python
+### 3. Set up Python environment
 
 ```bash
-# Installe python3-venv si nécessaire
-sudo apt update
-sudo apt install python3-venv python3-pip -y
-
-# Crée le venv
 python3 -m venv venv
-
-# Active le venv (à faire à chaque nouveau terminal)
 source venv/bin/activate
+pip install requests pandas numpy scikit-learn matplotlib pillow scipy \
+            fastapi uvicorn python-multipart httpx opencv-python-headless \
+            python-jose[cryptography] passlib[bcrypt]
 ```
 
-### 4. Installer les dépendances Python
+### 4. Install Ollama + AI models
 
 ```bash
-pip install requests pandas numpy scikit-learn matplotlib pillow scipy fastapi uvicorn python-multipart
+curl -fsSL https://ollama.ai/install.sh | sh
+ollama pull mistral   # 4.4 GB — text coaching
+ollama pull llava     # 4.7 GB — video analysis
 ```
 
-### 5. Installer les dépendances du dashboard React
+### 5. Install dashboard dependencies
 
 ```bash
 cd dashboard
@@ -74,287 +137,134 @@ cd ..
 
 ---
 
-## 🔑 Configuration des clés API
+## 🔑 API Keys
 
 ### Riot Games API Key
-1. Va sur [developer.riotgames.com](https://developer.riotgames.com)
-2. Connecte-toi avec ton compte Riot
-3. Génère une **Development API Key** (valable 24h)
-4. Exporte-la :
+Get a free development key at [developer.riotgames.com](https://developer.riotgames.com) (refreshes every 24h).
 
 ```bash
-export RIOT_API_KEY="RGAPI-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+export RIOT_API_KEY="RGAPI-xxxx-xxxx-xxxx-xxxx"
+export HENRIK_API_KEY="HDEV-xxxx-xxxx-xxxx-xxxx"
 ```
 
-### Henrik Dev API Key
-1. Rejoins le Discord Henrik : [discord.gg/X3GaVkX2YN](https://discord.gg/X3GaVkX2YN)
-2. Va sur [api.henrikdev.xyz/dashboard](https://api.henrikdev.xyz/dashboard)
-3. Génère une **Basic Key** (gratuite, instantanée)
-4. Exporte-la :
-
-```bash
-export HENRIK_API_KEY="HDEV-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-```
-
-> ⚠️ **Pour rendre les clés permanentes** (pas besoin de les réexporter à chaque terminal) :
+> For permanent setup (fish shell):
 > ```bash
-> echo 'export RIOT_API_KEY="RGAPI-ta-clé"' >> ~/.bashrc
-> echo 'export HENRIK_API_KEY="HDEV-ta-clé"' >> ~/.bashrc
-> source ~/.bashrc
+> echo 'set -gx RIOT_API_KEY "RGAPI-..."' >> ~/.config/fish/config.fish
+> echo 'set -gx HENRIK_API_KEY "HDEV-..."' >> ~/.config/fish/config.fish
 > ```
 
 ---
 
-## 📁 Structure du projet
+## 🚀 Usage
 
-```
-RiftIQ/
-├── riot_pipeline.py      # Collecte les données de matchs via API
-├── analyze.py            # Analyse statistique des données
-├── heatmap.py            # Module IA K-Means — génère les heatmaps
-├── api.py                # API FastAPI — sert les données au dashboard
-├── data/                 # Données JSON générées (gitignore)
-├── output/               # Heatmaps PNG générées (gitignore)
-├── dashboard/            # Dashboard React + Vite
-│   ├── src/
-│   │   ├── App.jsx
-│   │   ├── index.css
-│   │   └── pages/
-│   │       ├── Overview.jsx
-│   │       ├── Matches.jsx
-│   │       ├── Heatmaps.jsx
-│   │       └── Report.jsx
-│   └── package.json
-├── venv/                 # Environnement Python (gitignore)
-├── .gitignore
-└── README.md
-```
-
----
-
-## 🎯 Utilisation
-
-### Étape 1 — Récupérer tes données de match
+### Step 1 — Fetch match data
 
 ```bash
-# Active le venv
 source venv/bin/activate
-
-# Lance le pipeline (remplace par ton Riot ID et tag)
-python riot_pipeline.py --name "TonPseudo" --tag "EUW" --matches 20
-
-# Options disponibles :
-#   --name     Ton Riot ID (obligatoire)
-#   --tag      Ton tag Riot (obligatoire)
-#   --region   Région : euw (défaut), na, kr
-#   --matches  Nombre de matchs à analyser (max 20 avec clé dev)
+python riot_pipeline.py --name "YourName" --tag "EUW" --matches 20
 ```
 
-### Étape 2 — Générer les heatmaps K-Means
+### Step 2 — Generate heatmaps
 
 ```bash
-python heatmap.py --name "TonPseudo" --tag "EUW" --matches 20
-
-# Les images PNG sont générées dans output/
-# Pour les ouvrir (WSL) :
-explorer.exe output/
+python heatmap.py --name "YourName" --tag "EUW"
 ```
 
-### Étape 3 — Générer le rapport d'analyse
+### Step 3 — Launch the platform
 
 ```bash
-python analyze.py --name "TonPseudo" --tag "EUW"
-```
-
-### Étape 4 — Lancer le dashboard
-
-**Terminal 1 — API Python :**
-```bash
+# Terminal 1 — API
 source venv/bin/activate
 uvicorn api:app --reload --port 8000
+
+# Terminal 2 — Dashboard
+cd dashboard && npm run dev
 ```
 
-**Terminal 2 — Dashboard React :**
+Open [http://localhost:5173](http://localhost:5173)
+
+### Quick start (all in one)
+
 ```bash
-cd dashboard
-npm run dev
+chmod +x start.sh && ./start.sh
 ```
 
-**Ouvre dans ton navigateur :** [http://localhost:5173](http://localhost:5173)
-
-> Si le port 5173 est occupé, Vite utilisera 5174. Vérifie l'URL dans le terminal.
-
----
-
-## 🔧 Lancement rapide (tout en une fois)
-
-Crée un fichier `start.sh` à la racine :
+### Video analysis
 
 ```bash
-cat > start.sh << 'EOF'
-#!/bin/bash
-echo "🎮 Démarrage RiftIQ..."
-
-# Active le venv
-source venv/bin/activate
-
-# Lance l'API en arrière-plan
-uvicorn api:app --port 8000 &
-API_PID=$!
-echo "✅ API lancée (PID $API_PID)"
-
-# Lance le dashboard
-cd dashboard
-npm run dev &
-DASH_PID=$!
-echo "✅ Dashboard lancé (PID $DASH_PID)"
-
-echo ""
-echo "🌐 Dashboard : http://localhost:5173"
-echo "📡 API       : http://localhost:8000"
-echo ""
-echo "Pour arrêter : Ctrl+C ou kill $API_PID $DASH_PID"
-
-wait
-EOF
-
-chmod +x start.sh
-```
-
-Ensuite :
-```bash
-./start.sh
+python video_coach.py --video your_game.mp4 --frames 8
 ```
 
 ---
 
-## 🗺️ Maps supportées
+## 🗺️ Supported Maps
 
-| Map | Paramètres | Statut |
-|-----|-----------|--------|
-| Ascent | ✅ | Supportée |
-| Bind | ✅ | Supportée |
-| Split | ✅ | Supportée |
-| Haven | ✅ | Supportée |
-| Fracture | ✅ | Supportée |
-| Pearl | ✅ | Supportée |
-| Icebox | ✅ | Supportée |
-| Breeze | ✅ | Supportée |
-| Lotus | ✅ | Supportée |
-| Sunset | ✅ | Supportée |
-| Abyss | ✅ | Supportée |
-| Corrode | ✅ | Supportée |
+Ascent · Bind · Split · Haven · Fracture · Pearl · Icebox · Breeze · Lotus · Sunset · Abyss · Corrode
 
 ---
 
-## 🧠 Architecture technique
+## 🔧 Architecture
 
 ```
 ┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
 │   Riot API      │────▶│  riot_pipeline   │────▶│   data/*.json   │
-│  Henrik API     │     │   (Python)       │     │                 │
-└─────────────────┘     └──────────────────┘     └────────┬────────┘
-                                                           │
-                        ┌──────────────────┐              │
-                        │   heatmap.py     │◀─────────────┘
-                        │  K-Means + KDE   │
-                        │  scikit-learn    │
-                        └────────┬─────────┘
-                                 │
-                        ┌────────▼─────────┐
-                        │  output/*.png    │
-                        │  (heatmaps)      │
-                        └────────┬─────────┘
-                                 │
-┌─────────────────┐     ┌────────▼─────────┐
-│  Dashboard      │◀────│   api.py         │
-│  React + Vite   │     │   FastAPI        │
-│  localhost:5173 │     │   localhost:8000 │
-└─────────────────┘     └──────────────────┘
+│   Henrik API    │     │   (Python)       │     └────────┬────────┘
+└─────────────────┘     └──────────────────┘              │
+                                                           ▼
+                        ┌──────────────────┐     ┌─────────────────┐
+                        │   heatmap.py     │────▶│  output/*.png   │
+                        │  K-Means + KDE   │     └────────┬────────┘
+                        └──────────────────┘              │
+                                                           ▼
+┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
+│  React Dashboard│◀────│    FastAPI       │◀────│  Ollama         │
+│  Vite · :5173   │     │    :8000         │     │  Mistral + LLaVA│
+└─────────────────┘     └──────────────────┘     └─────────────────┘
 ```
 
 ---
 
-## ❗ Dépannage
+## 📊 Roadmap
 
-### `RIOT_API_KEY` expire toutes les 24h
-Les clés de développement Riot expirent. Régénère-en une sur [developer.riotgames.com](https://developer.riotgames.com) et réexporte-la.
-
-### Erreur CORS sur le dashboard
-Vite démarre parfois sur le port 5174 au lieu de 5173. Dans `api.py`, assure-toi d'avoir :
-```python
-allow_origins=["*"],
-```
-
-### `npm install` échoue avec peer deps
-```bash
-npm install --legacy-peer-deps
-```
-
-### Recharts ne s'installe pas
-```bash
-npm install recharts@2.12.7 --legacy-peer-deps
-```
-
-### Rate limit Henrik (429)
-Le pipeline attend automatiquement 12 secondes. Si ça persiste, attends 1 minute et relance.
-
-### Aucun match récupéré
-- Vérifie que `HENRIK_API_KEY` est bien exportée
-- Vérifie que le pseudo et le tag sont exacts (sensible à la casse)
-- Assure-toi d'avoir joué des parties compétitives récemment
+- [x] Match data pipeline (Riot + Henrik API)
+- [x] K-Means heatmaps (12 maps)
+- [x] FastAPI backend with streaming
+- [x] React dashboard (7 pages)
+- [x] LLM coaching — Mistral 7B
+- [x] Per-match detailed analysis
+- [x] Video coaching — LLaVA + OpenCV
+- [ ] Riot RSO OAuth2 authentication
+- [ ] Multi-user profiles (SQLite)
+- [ ] Economy scoring module
+- [ ] Docker deployment + VPS
+- [ ] Mobile app (React Native)
 
 ---
 
-## 📊 Fonctionnalités
+## ❗ Troubleshooting
 
-### Pipeline de données
-- Connexion à la Riot API officielle pour le PUUID
-- Récupération des matchs via Henrik Dev API
-- Parsing et structuration des données (KDA, HS%, ACS, économie, positions)
-- Sauvegarde en JSON pour traitement offline
-
-### Module IA — K-Means Clustering
-- Détection automatique du K optimal (méthode du coude)
-- KDE gaussien pour visualiser la densité
-- Masquage des zones hors-map via canal alpha
-- Coloration par niveau de danger (vert → rouge)
-- Labels anti-overlap avec flèches
-
-### Dashboard React
-- **Overview** : KPIs, évolution KDA, profil radar, agents, winrate par map
-- **Matches** : Historique complet coloré WIN/LOSS
-- **Heatmaps** : Grille de toutes les maps, zoom plein écran au clic
-- **Rapport** : Analyse textuelle colorée avec conseils
+| Issue | Fix |
+|-------|-----|
+| Riot API key expired | Regenerate at developer.riotgames.com (24h TTL) |
+| Port 8000 in use | `pkill -9 -f uvicorn` |
+| npm peer deps error | `npm install --legacy-peer-deps` |
+| Ollama not responding | `ollama serve` |
+| Video analysis slow | Use `--frames 4` to reduce processing time |
 
 ---
 
-## 🔮 Roadmap EIP
+## ⚖️ Legal
 
-- [x] Pipeline données Riot + Henrik
-- [x] Module K-Means heatmap
-- [x] API FastAPI
-- [x] Dashboard React
-- [ ] Module LLM — conseils en langage naturel (GPT/Mistral)
-- [ ] Authentification multi-joueurs
-- [ ] Scoring économique (2ème module IA)
-- [ ] Déploiement production (Docker + VPS)
-- [ ] Application mobile
+RiftIQ is not endorsed by Riot Games and does not reflect their views.
+VALORANT and all related assets are trademarks of Riot Games, Inc.
+Match data is accessed via the official Riot Games API under their Terms of Service.
 
 ---
 
-## ⚖️ Mentions légales
+<div align="center">
 
-Ce projet utilise les APIs Riot Games et Henrik Dev.  
-Il n'est pas approuvé par Riot Games et ne reflète pas leurs opinions.  
-Riot Games, VALORANT et tous les éléments associés sont des marques déposées de Riot Games, Inc.
+**Built with ❤️ for the Valorant competitive community**
 
----
+[⭐ Star this repo](https://github.com/Nxva83/RiftIQ) · [🐛 Report a bug](https://github.com/Nxva83/RiftIQ/issues) · [💡 Request a feature](https://github.com/Nxva83/RiftIQ/issues)
 
-## 👥 Équipe EIP Epitech 2025
-
-**RiftIQ** — Coaching IA pour joueurs compétitifs Valorant
-
----
-
-*Made with ❤️ at Epitech*
+</div>
