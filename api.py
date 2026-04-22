@@ -16,6 +16,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+os.makedirs("output", exist_ok=True)
 app.mount("/heatmaps", StaticFiles(directory="output"), name="heatmaps")
 
 DATA_DIR = "data"
