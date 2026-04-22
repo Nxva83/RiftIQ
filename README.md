@@ -6,7 +6,7 @@
 <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
 <img src="https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white" />
 
-# ⚡ RiftIQ
+# ⚡ NeuralIQ
 ### AI-Powered Valorant Coaching Platform
 
 *Analyze your gameplay. Identify your weaknesses. Climb the ladder.*
@@ -17,9 +17,9 @@
 
 ---
 
-## 🎯 What is RiftIQ?
+## 🎯 What is NeuralIQ?
 
-RiftIQ is a **full-stack AI coaching platform** for competitive Valorant players. It combines Machine Learning, Large Language Models, and Computer Vision to deliver personalized coaching insights — all running **100% locally** on your machine.
+NeuralIQ is a **full-stack AI coaching platform** for competitive Valorant players. It combines Machine Learning, Large Language Models, and Computer Vision to deliver personalized coaching insights — all running **100% locally** on your machine.
 
 No subscription required to get started. No data sent to external AI services. Your gameplay data stays yours.
 
@@ -40,7 +40,7 @@ Chat with a local LLM that knows your match history, heatmap patterns, and econo
 Select any match from your history and get a detailed breakdown — round by round kill patterns, early deaths, economy efficiency, first blood stats, and multi-kill moments.
 
 ### 🎬 Video Coach — LLaVA Vision AI
-Upload an MP4 gameplay recording. RiftIQ extracts key frames, analyzes your on-site positioning and minimap rotations using computer vision, then synthesizes a coaching report.
+Upload an MP4 gameplay recording. NeuralIQ extracts key frames, analyzes your on-site positioning and minimap rotations using computer vision, then synthesizes a coaching report.
 
 ---
 
@@ -96,8 +96,8 @@ Upload an MP4 gameplay recording. RiftIQ extracts key frames, analyzes your on-s
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/Nxva83/RiftIQ.git
-cd RiftIQ
+git clone https://github.com/Nxva83/NeuralIQ.git
+cd NeuralIQ
 ```
 
 ### 2. Install Node.js 20
@@ -255,7 +255,7 @@ Ascent · Bind · Split · Haven · Fracture · Pearl · Icebox · Breeze · Lot
 
 ## ⚖️ Legal
 
-RiftIQ is not endorsed by Riot Games and does not reflect their views.
+NeuralIQ is not endorsed by Riot Games and does not reflect their views.
 VALORANT and all related assets are trademarks of Riot Games, Inc.
 Match data is accessed via the official Riot Games API under their Terms of Service.
 
@@ -265,6 +265,6 @@ Match data is accessed via the official Riot Games API under their Terms of Serv
 
 **Built with ❤️ for the Valorant competitive community**
 
-[⭐ Star this repo](https://github.com/Nxva83/RiftIQ) · [🐛 Report a bug](https://github.com/Nxva83/RiftIQ/issues) · [💡 Request a feature](https://github.com/Nxva83/RiftIQ/issues)
+[⭐ Star this repo](https://github.com/Nxva83/NeuralIQ) · [🐛 Report a bug](https://github.com/Nxva83/NeuralIQ/issues) · [💡 Request a feature](https://github.com/Nxva83/NeuralIQ/issues)
 
 </div>

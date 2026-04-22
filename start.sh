@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "🎮 Démarrage RiftIQ..."
+echo "🎮 Démarrage NeuralIQ..."
 
 # Active le venv
 source venv/bin/activate

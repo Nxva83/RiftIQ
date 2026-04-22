@@ -226,7 +226,7 @@ export default function MatchAnalysis({ matches }) {
                   fontFamily: "var(--font-mono)", fontSize: 10,
                   color: "var(--cyan)", marginBottom: 10, letterSpacing: 1
                 }}>
-                  🤖 RIFTIQ COACH — ANALYSE DÉTAILLÉE
+                  🤖 NEURALIQ COACH — ANALYSE DÉTAILLÉE
                 </div>
                 {analysis}
                 {loading && <span style={{ color: "var(--cyan)", animation: "blink 1s infinite" }}>▊</span>}
@@ -250,7 +250,7 @@ export default function MatchAnalysis({ matches }) {
                 }}>
                   {msg.role === "assistant" && (
                     <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--cyan)", marginBottom: 6 }}>
-                      🤖 RIFTIQ COACH
+                      🤖 NEURALIQ COACH
                     </div>
                   )}
                   {msg.content}

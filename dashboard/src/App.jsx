@@ -66,7 +66,7 @@ export default function App() {
     <div className="app">
       {/* Header */}
       <header className="header">
-        <div className="header-logo">RIFT<span>IQ</span></div>
+        <div className="header-logo">NEURAL<span>IQ</span></div>
         <div className="header-tag">{PLAYER.name}#{PLAYER.tag}</div>
 
         {/* Bouton refresh */}
@@ -91,7 +91,7 @@ export default function App() {
           {refreshing ? "⏳" : "↺"} REFRESH
         </button>
 
-        <div className="header-badge">RIFTIQ PRO · 2026</div>
+        <div className="header-badge">NEURALIQ PRO · 2026</div>
       </header>
 
       {/* Sidebar */}

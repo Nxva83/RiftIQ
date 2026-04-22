@@ -1,5 +1,5 @@
 """
-RiftIQ — Pipeline de données Valorant
+NeuralIQ — Pipeline de données Valorant
 ======================================
 Utilise :
   - Riot API officielle  → PUUID du joueur
@@ -29,7 +29,7 @@ REGIONS = {
 }
 
 RIOT_HEADERS   = {"X-Riot-Token": API_KEY}
-HENRIK_HEADERS = {"User-Agent": "RiftIQ/1.0", "Authorization": HENRIK_API_KEY}
+HENRIK_HEADERS = {"User-Agent": "NeuralIQ/1.0", "Authorization": HENRIK_API_KEY}
 RATE_LIMIT_PAUSE = 1.2
 
 # ─── Dataclasses ───────────────────────────────────────────────────────────────
@@ -285,7 +285,7 @@ class RiotClient:
 
 # ─── Pipeline ──────────────────────────────────────────────────────────────────
 
-class RiftIQPipeline:
+class NeuralIQPipeline:
     def __init__(self, region: str = "euw"):
         self.client   = RiotClient(region)
         self.data_dir = "data"
@@ -293,7 +293,7 @@ class RiftIQPipeline:
 
     def run(self, game_name: str, tag_line: str, match_count: int = 20):
         print("\n" + "═" * 50)
-        print("  🎮 RiftIQ — Pipeline de données Valorant")
+        print("  🎮 NeuralIQ — Pipeline de données Valorant")
         print("═" * 50 + "\n")
 
         # 1. Récupère le joueur via Riot API (PUUID officiel)
@@ -366,10 +366,10 @@ class RiftIQPipeline:
 # ─── CLI ───────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="RiftIQ — Riot Data Pipeline")
+    parser = argparse.ArgumentParser(description="NeuralIQ — Riot Data Pipeline")
     parser.add_argument("--name",    required=True)
     parser.add_argument("--tag",     required=True)
     parser.add_argument("--region",  default="euw", choices=REGIONS.keys())
     parser.add_argument("--matches", default=20, type=int)
     args = parser.parse_args()
-    RiftIQPipeline(region=args.region).run(args.name, args.tag, args.matches)
+    NeuralIQPipeline(region=args.region).run(args.name, args.tag, args.matches)

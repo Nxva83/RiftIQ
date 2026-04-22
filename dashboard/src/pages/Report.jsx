@@ -4,7 +4,7 @@ export default function Report({report}) {
     <div>
       <div className="section-title">Rapport d'analyse</div>
       <div className="card">
-        <div className="card-title">Analyse des zones — généré par RiftIQ</div>
+        <div className="card-title">Analyse des zones — généré par NeuralIQ</div>
         <div className="report-box">
           {lines.map((line,i)=>{
             const isWarning = line.includes("⚠️") || line.includes("POINT NOIR")

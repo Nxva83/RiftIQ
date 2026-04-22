@@ -1,5 +1,5 @@
 """
-RiftIQ — Module Coach IA (LLM)
+NeuralIQ — Module Coach IA (LLM)
 ================================
 Utilise Ollama (Mistral 7B) en local pour générer des conseils
 personnalisés basés sur les stats + données des heatmaps K-Means.
@@ -136,7 +136,7 @@ def build_prompt(data: dict, question: str = None) -> str:
 {data["heatmap_report"]}
 """
 
-    prompt = f"""Tu es RiftIQ, un coach IA expert en Valorant compétitif.
+    prompt = f"""Tu es NeuralIQ, un coach IA expert en Valorant compétitif.
 Tu analyses les données de parties d'un joueur et tu donnes des conseils précis, actionnables et bienveillants.
 Tu parles en français, avec un ton coach professionnel mais accessible.
 Tu connais parfaitement le méta Valorant, les callouts des maps, les rôles des agents.
@@ -247,7 +247,7 @@ def generate_coaching_report(name: str, tag: str) -> str:
     out_path = f"{OUTPUT_DIR}/coaching_{name}_{tag}.txt"
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     with open(out_path, "w", encoding="utf-8") as f:
-        f.write(f"=== Rapport de coaching RiftIQ — {name}#{tag} ===\n\n")
+        f.write(f"=== Rapport de coaching NeuralIQ — {name}#{tag} ===\n\n")
         f.write(response)
     print(f"\n💾 Rapport sauvegardé : {out_path}")
 
@@ -268,7 +268,7 @@ def ask_coach(name: str, tag: str, question: str) -> str:
 # ─── CLI ───────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="RiftIQ — Coach IA Mistral")
+    parser = argparse.ArgumentParser(description="NeuralIQ — Coach IA Mistral")
     parser.add_argument("--name",     required=True)
     parser.add_argument("--tag",      required=True)
     parser.add_argument("--question", default=None,

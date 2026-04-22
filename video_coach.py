@@ -1,5 +1,5 @@
 """
-RiftIQ — Analyse vidéo via LLaVA (Computer Vision)
+NeuralIQ — Analyse vidéo via LLaVA (Computer Vision)
 ====================================================
 Extrait des frames clés d'un MP4 Valorant et utilise LLaVA
 pour analyser le positionnement sur site et la minimap.
@@ -163,7 +163,7 @@ def synthesize_analysis(analyses: list[dict]) -> str:
         if a.get("minimap"):
             analyses_text += f"Minimap : {a['minimap']}\n"
 
-    prompt = f"""Tu es RiftIQ, un coach IA expert Valorant.
+    prompt = f"""Tu es NeuralIQ, un coach IA expert Valorant.
 Tu as analysé {len(analyses)} moments clés d'une partie via Computer Vision.
 Voici les observations frame par frame :
 
@@ -221,7 +221,7 @@ def analyze_video(video_path: str, n_frames: int = 8) -> dict:
     4. Synthèse par Mistral
     """
     print(f"\n{'═'*50}")
-    print(f"  🎬 RiftIQ — Analyse vidéo")
+    print(f"  🎬 NeuralIQ — Analyse vidéo")
     print(f"{'═'*50}\n")
 
     if not os.path.exists(video_path):
@@ -281,7 +281,7 @@ def analyze_video(video_path: str, n_frames: int = 8) -> dict:
 # ─── CLI ───────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="RiftIQ — Analyse vidéo LLaVA")
+    parser = argparse.ArgumentParser(description="NeuralIQ — Analyse vidéo LLaVA")
     parser.add_argument("--video",  required=True, help="Chemin vers le fichier MP4")
     parser.add_argument("--frames", default=8, type=int,
                         help="Nombre de frames à analyser (défaut: 8)")

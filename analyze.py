@@ -1,5 +1,5 @@
 """
-RiftIQ — Analyse des données (module 1)
+NeuralIQ — Analyse des données (module 1)
 =========================================
 À lancer après riot_pipeline.py.
 Génère des insights à partir des JSON sauvegardés.
@@ -159,7 +159,7 @@ def generate_report(name: str, tag: str, matches: list, events: list) -> str:
 
     lines = [
         f"╔══════════════════════════════════════════════╗",
-        f"  📊 Rapport RiftIQ — {name}#{tag}",
+        f"  📊 Rapport NeuralIQ — {name}#{tag}",
         f"╚══════════════════════════════════════════════╝",
         f"",
         f"  Sur {total} matchs analysés :",
@@ -223,7 +223,7 @@ def generate_report(name: str, tag: str, matches: list, events: list) -> str:
 # ─── CLI ───────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="RiftIQ — Analyse des données")
+    parser = argparse.ArgumentParser(description="NeuralIQ — Analyse des données")
     parser.add_argument("--name", required=True, help="Riot ID")
     parser.add_argument("--tag",  required=True, help="Tag (ex: EUW)")
     args = parser.parse_args()

@@ -181,7 +181,7 @@ export default function Coach({ matches, heatmaps }) {
                     fontFamily: "var(--font-mono)", fontSize: 10,
                     color: "var(--cyan)", marginBottom: 6, letterSpacing: 1
                   }}>
-                    🤖 RIFTIQ COACH
+                    🤖 NEURALIQ COACH
                   </div>
                 )}
                 {msg.content}

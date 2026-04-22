@@ -1,5 +1,5 @@
 """
-RiftIQ — API FastAPI complète
+NeuralIQ — API FastAPI complète
 """
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware

@@ -1,5 +1,5 @@
 """
-RiftIQ — Analyse détaillée d'un match spécifique
+NeuralIQ — Analyse détaillée d'un match spécifique
 """
 
 import os, json, requests, time
@@ -7,7 +7,7 @@ from collections import defaultdict
 
 def get_henrik_headers():
     key = os.getenv("HENRIK_API_KEY", "")
-    return {"Authorization": key, "User-Agent": "RiftIQ/1.0"}
+    return {"Authorization": key, "User-Agent": "NeuralIQ/1.0"}
 
 OLLAMA_URL   = "http://localhost:11434/api/generate"
 OLLAMA_MODEL = "mistral"
@@ -179,7 +179,7 @@ def build_match_prompt(detail: dict, player: str) -> str:
             rounds_str += f" dont {r['early_kills']} early"
         rounds_str += "\n"
 
-    return f"""Tu es RiftIQ, un coach IA expert Valorant. Tu analyses une partie en détail.
+    return f"""Tu es NeuralIQ, un coach IA expert Valorant. Tu analyses une partie en détail.
 Tu parles en français, avec un ton de coach professionnel et bienveillant.
 Tu t'appuies UNIQUEMENT sur les données chiffrées fournies.
 Ne cite JAMAIS de mécaniques d'agents spécifiques que tu ne connais pas avec certitude.
